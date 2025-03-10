@@ -1,4 +1,5 @@
 requests
+openai==0.28
 python-dotenv
 pytest
 flake8

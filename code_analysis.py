@@ -1,3 +1,7 @@
+# Code analysis file to analyze the code for potential issues
+# and improvements using OpenAI's API
+# Import the required libraries
+
 import os
 import openai
 from dotenv import load_dotenv
@@ -9,18 +13,16 @@ openai.api_key = OPENAI_API_KEY
 
 
 def analyze_code(code):
-    response = openai.Completion.create(
-        engine="davinci-codex",
-        prompt=(
-            "Analyze code for potential issues and improvements:\n\n"
-            f"{code}"
-        ),
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a code analysis assistant."},
+            {"role": "user", "content": f"Analyze the following code for potential issues and improvements:\n\n{code}"}
+        ],
         max_tokens=150,
-        n=1,
-        stop=None,
         temperature=0.5,
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message['content'].strip()
 
 
 if __name__ == "__main__":
