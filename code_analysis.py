@@ -7,10 +7,14 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
 
+
 def analyze_code(code):
     response = openai.Completion.create(
         engine="davinci-codex",
-        prompt=f"Analyze the following code for potential issues and improvements:\n\n{code}",
+        prompt=(
+            "Analyze the following code for potential issues and improvements:\n\n"
+            f"{code}"
+        ),
         max_tokens=150,
         n=1,
         stop=None,
