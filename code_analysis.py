@@ -1,3 +1,7 @@
+# Code analysis file to analyze the code for potential issues
+# and improvements using OpenAI's Codex API
+# Import the required libraries
+
 import os
 import openai
 from dotenv import load_dotenv
