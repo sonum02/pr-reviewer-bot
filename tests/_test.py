@@ -1,2 +1,9 @@
+"""
+This module contains example tests.
+"""
+
 def test_example():
-    assert 1 + 1 == 2
+    """
+    An example test function.
+    """
+    assert 2 + 2 == 4
