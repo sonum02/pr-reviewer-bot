@@ -40,6 +40,6 @@ jobs:
 
     - name: Analyze code with OpenAI
       env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY != '' && secrets.OPENAI_API_KEY || 'default_value' }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         python code_analysis.py
