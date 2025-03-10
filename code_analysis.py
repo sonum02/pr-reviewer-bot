@@ -12,7 +12,7 @@ def analyze_code(code):
     response = openai.Completion.create(
         engine="davinci-codex",
         prompt=(
-            "Analyze the following code for potential issues and improvements:\n\n"
+            "Analyze the code for potential issues and improvements:\n\n"
             f"{code}"
         ),
         max_tokens=150,
