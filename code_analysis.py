@@ -1,3 +1,7 @@
+# Code analysis file to analyze the code for potential issues
+# and improvements using OpenAI's Codex API
+# Import the required libraries
+
 import os
 import openai
 from dotenv import load_dotenv
@@ -10,7 +14,7 @@ openai.api_key = OPENAI_API_KEY
 
 def analyze_code(code):
     response = openai.Completion.create(
-        engine="davinci-codex",
+        engine="gpt-4",
         prompt=(
             "Analyze code for potential issues and improvements:\n\n"
             f"{code}"
