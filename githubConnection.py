@@ -1,13 +1,13 @@
-#Configure GitHub API access and authentication
-#Import the necessary libraries
+# Configure GitHub API access and authentication
+
 import os
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 print(f"Loaded GitHub Token: {GITHUB_TOKEN}")  # Debugging line
-import requests
 
 headers = {
     'Authorization': f'token {GITHUB_TOKEN}',
