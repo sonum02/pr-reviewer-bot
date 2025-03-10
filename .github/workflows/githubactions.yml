@@ -30,7 +30,7 @@ jobs:
       run: |
         python -m pytest tests
 
-    - name: Lint code
+    - name: Lint code with flake8
       run: |
         flake8 .
 
@@ -43,3 +43,4 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         python code_analysis.py
+        
