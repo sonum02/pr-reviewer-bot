@@ -33,3 +33,13 @@ jobs:
     - name: Lint code
       run: |
         flake8 .
+
+    - name: Lint code with pylint
+      run: |
+        pylint **/*.py
+
+    - name: Analyze code with OpenAI
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY != '' && secrets.OPENAI_API_KEY || 'default_value' }}
+      run: |
+        python code_analysis.py
