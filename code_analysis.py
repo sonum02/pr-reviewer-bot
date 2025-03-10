@@ -16,11 +16,8 @@ def analyze_code(code):
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
-            {"role": "system", "content": 
-             "You are a code analysis assistant."},
-            {"role": "user", 
-             "content": f"Analyze below code for potential issues and improvements:\n\n{code}"
-             }
+            {"role": "system", "content": "You are a code analysis assistant."},
+            {"role": "user", "content": f"Analyze below code for potential issues and improvements:\n\n{code}"}
         ],
         max_tokens=150,
         temperature=0.5,
