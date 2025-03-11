@@ -25,6 +25,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install sendgrid
 
     - name: Run Pylint
       id: pylint
@@ -41,14 +42,6 @@ jobs:
       run: |
         python code_analysis.py > code_analysis_report.txt
         cat code_analysis_report.txt
-    
-    - name: Install mail utility
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y mailutils
-
-    - name: Debug environment variables
-      run: env
 
     - name: Send email with results
       env:
@@ -56,8 +49,5 @@ jobs:
         TO_EMAIL: sonum02@gmail.com
         FROM_EMAIL: prreviewer@reviewer.com
       run: |
-        pylint_score=${{ steps.pylint.outputs.score }}
-        code_analysis=$(cat code_analysis_report.txt)
-        email_body="Pylint Score: $pylint_score\n\nCode Analysis:\n$code_analysis"
-        echo "$email_body" | mail -s "PR Code Analysis Results" -r $FROM_EMAIL $TO_EMAIL
+        python send_email.py
         
