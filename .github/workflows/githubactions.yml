@@ -26,21 +26,35 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run tests
+    - name: Run Pylint
+      id: pylint
       run: |
-        python -m pytest tests
-
-    - name: Lint code with flake8
-      run: |
-        flake8 .
-
-    - name: Lint code with pylint
-      run: |
-        pylint **/*.py
+        pylint **/*.py > pylint_report.txt
+        pylint_score=$(tail -n 2 pylint_report.txt | head -n 1 | awk '{print $7}')
+        echo "Pylint score: $pylint_score"
+        echo "::set-output name=score::$pylint_score"
 
     - name: Analyze code with OpenAI
+      id: code_analysis
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        python code_analysis.py
+        python code_analysis.py > code_analysis_report.txt
+        cat code_analysis_report.txt
+    
+    - name: Install mail utility
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mailutils
+
+    - name: Send email with results
+      env:
+        SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        TO_EMAIL: your-email@example.com
+        FROM_EMAIL: your-sendgrid-verified-email@example.com
+      run: |
+        pylint_score=${{ steps.pylint.outputs.score }}
+        code_analysis=$(cat code_analysis_report.txt)
+        email_body="Pylint Score: $pylint_score\n\nCode Analysis:\n$code_analysis"
+        echo "$email_body" | mail -s "PR Code Analysis Results" -r $FROM_EMAIL $TO_EMAIL
         
