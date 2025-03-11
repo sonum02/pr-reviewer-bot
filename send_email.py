@@ -1,3 +1,4 @@
+# Description: This script sends an email with the code analysis results to the specified email address
 import os
 import sendgrid
 from sendgrid.helpers.mail import Mail
