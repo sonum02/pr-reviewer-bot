@@ -53,8 +53,8 @@ jobs:
     - name: Send email with results
       env:
         SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-        TO_EMAIL: your-email@example.com
-        FROM_EMAIL: your-sendgrid-verified-email@example.com
+        TO_EMAIL: sonum02@gmail.com
+        FROM_EMAIL: prreviewer@reviewer.com
       run: |
         pylint_score=${{ steps.pylint.outputs.score }}
         code_analysis=$(cat code_analysis_report.txt)
