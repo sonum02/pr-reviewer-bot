@@ -47,6 +47,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y mailutils
 
+    - name: Debug environment variables
+      run: env
+
     - name: Send email with results
       env:
         SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
