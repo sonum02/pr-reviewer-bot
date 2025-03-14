@@ -51,9 +51,16 @@ def main():
     """
     Main function to read the code from a file, analyze it, and save the analysis report.
     """
+    try:
+        with open("githubConnection.py", "r") as file:
+            code = file.read()
+    except Exception as e:
+        print(f"Error reading code file: {e}")
+        return
+
     repo_name = os.getenv('GITHUB_REPOSITORY')
     pr_number = os.getenv('PR_NUMBER')
-    github_token = os.getenv('GITHUB_TOKEN')
+    github_token = os.getenv('GH_TOKEN')
 
     changes = get_pr_changes(repo_name, pr_number, github_token)
     for change in changes:
