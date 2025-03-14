@@ -2,11 +2,15 @@ import os
 import sendgrid
 from sendgrid.helpers.mail import Mail
 
+# Load environment variables
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 TO_EMAIL = os.getenv('TO_EMAIL')
 FROM_EMAIL = os.getenv('FROM_EMAIL')
 
 def send_email(subject, content):
+    """
+    Send an email using SendGrid API.
+    """
     sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
     email = Mail(
         from_email=FROM_EMAIL,
@@ -23,6 +27,9 @@ def send_email(subject, content):
         print(f"Error sending email: {e}")
 
 def main():
+    """
+    Main function to read reports and send an email with the results.
+    """
     try:
         with open("pylint_report.txt", "r") as pylint_file:
             pylint_score = pylint_file.readlines()[-2].split()[-1]

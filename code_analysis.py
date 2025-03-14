@@ -1,15 +1,18 @@
-# Import the required libraries
-
 import os
 import openai
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
 load_dotenv()
 
+# Set OpenAI API key
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
 
 def analyze_code(code):
+    """
+    Analyze the given code using OpenAI's GPT-4 model.
+    """
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
@@ -25,6 +28,9 @@ def analyze_code(code):
     return response.choices[0].message['content'].strip()
 
 def main():
+    """
+    Main function to read the code from a file, analyze it, and save the analysis report.
+    """
     with open("githubConnection.py", "r") as file:
         code = file.read()
     analysis = analyze_code(code)
@@ -34,3 +40,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
