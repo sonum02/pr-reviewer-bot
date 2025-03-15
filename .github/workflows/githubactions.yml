@@ -47,7 +47,7 @@ jobs:
       env:
         SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
         TO_EMAIL: sonum02@gmail.com
-        FROM_EMAIL: prreviewer@reviewer.com
+        FROM_EMAIL: sonum02@gmail.com
       run: |
         python send_email.py
         
