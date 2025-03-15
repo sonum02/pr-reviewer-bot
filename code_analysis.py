@@ -17,6 +17,7 @@ def get_pr_changes(repo_name, pr_number, token):
     """
     if not repo_name or not pr_number or not token:
         print("Missing required environment variables.")
+        print(f"repo_name: {repo_name}, pr_number: {pr_number}, token: {token}")
         return []
 
     url = f"https://api.github.com/repos/{repo_name}/pulls/{pr_number}/files"

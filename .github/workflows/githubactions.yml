@@ -39,7 +39,13 @@ jobs:
       id: code_analysis
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
       run: |
+        echo "GITHUB_REPOSITORY=${{ github.repository }}"
+        echo "PR_NUMBER=${{ github.event.pull_request.number }}"
+        echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}"
         python code_analysis.py > code_analysis_report.txt
         cat code_analysis_report.txt
 
