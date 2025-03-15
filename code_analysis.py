@@ -15,6 +15,10 @@ def get_pr_changes(repo_name, pr_number, token):
     """
     Fetch the changes in a pull request from the GitHub API.
     """
+    if not repo_name or not pr_number or not token:
+        print("Missing required environment variables.")
+        return []
+
     url = f"https://api.github.com/repos/{repo_name}/pulls/{pr_number}/files"
     headers = {"Authorization": f"token {token}"}
     try:
@@ -39,7 +43,7 @@ def analyze_code(code):
                     f"improvements:\n\n{code}"
                 )}
             ],
-            max_tokens=200,
+            max_tokens=150,
             temperature=0.5,
         )
         return response.choices[0].message['content'].strip()
@@ -54,11 +58,6 @@ def main():
     repo_name = os.getenv('GITHUB_REPOSITORY')
     pr_number = os.getenv('PR_NUMBER')
     github_token = os.getenv('GITHUB_TOKEN')
-
-    repo_name = os.getenv('GITHUB_REPOSITORY')
-    pr_number = os.getenv('PR_NUMBER')
-    github_token = os.getenv('GITHUB_TOKEN')
-
 
     changes = get_pr_changes(repo_name, pr_number, github_token)
     for change in changes:
@@ -81,3 +80,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
