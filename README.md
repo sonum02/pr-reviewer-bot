@@ -25,6 +25,7 @@ The GitHub Pull Request Reviewer Bot is an AI-powered automation tool that revie
 
 ## Libraries and frameworks used
 - Open AI: To analyze code
+- GitHub Actions
 - SendGrid: Send automated email
 - Requests: GitHub API interaction
 - Dotenv: Load env variables
