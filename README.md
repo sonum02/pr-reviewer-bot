@@ -1,4 +1,4 @@
-# Pull Request Reviewer Bot
+# PR Monitor
 
 ## Note: This Project is work in progress so will update the Readme as I go
 
@@ -7,7 +7,8 @@ The GitHub Pull Request Reviewer Bot is an AI-powered automation tool that revie
 
 
 ## Benefits
-- Automated code quality and style enforcement.
-- Faster PR reviews, reducing the burden on human reviewers.
-- Consistency in code reviews across repositories.
-- Integration with existing CI/CD workflows.
+- Improved Code Quality: Automated checks help maintain high code quality by catching issues early in the development process.
+- Consistency: Enforces consistent coding standards across the codebase.
+- Efficiency: Saves time for developers by automating repetitive tasks and providing immediate feedback.
+- Collaboration: Keeps the team informed about code quality issues through automated notifications, facilitating better collaboration and quicker resolution of issues.
+
