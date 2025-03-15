@@ -1,5 +1,9 @@
+# List of dependencies required for the project
+pandas
 requests
+openai==0.28
 python-dotenv
 pytest
 flake8
 pylint
+sendgrid  # Added sendgrid for sending emails
