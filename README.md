@@ -29,3 +29,6 @@ The GitHub Pull Request Reviewer Bot is an AI-powered automation tool that revie
 - SendGrid: Send automated email
 - Requests: GitHub API interaction
 - Dotenv: Load env variables
+
+## PR Monitor Overview
+![Image](https://github.com/user-attachments/assets/bb479e5a-af81-454f-9771-e13990a858b5)
