@@ -1,3 +1,4 @@
+# Test the code analysis script by running it locally.
 # Import all the libraries
 import os
 import openai
@@ -81,4 +82,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
