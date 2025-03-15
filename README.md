@@ -30,4 +30,4 @@ The GitHub Pull Request Reviewer Bot is an AI-powered automation tool that revie
 - Dotenv: Load env variables
 
 ## PR Monitor Overview
-![Image](https://github.com/user-attachments/assets/bb479e5a-af81-454f-9771-e13990a858b5)
+![Image](https://github.com/user-attachments/assets/b15011fc-bd90-498e-878d-fcaa9a211e35)
