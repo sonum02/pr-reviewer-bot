@@ -1,4 +1,4 @@
-# PR Monitor
+# PR Monitor & Reviewer
 
 
 ## Project Overview
