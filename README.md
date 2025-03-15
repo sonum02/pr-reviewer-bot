@@ -1,4 +1,4 @@
-# Auto Review
+# Auto PR Reviewer
 
 
 ## Project Overview
