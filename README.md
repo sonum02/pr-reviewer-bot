@@ -1,6 +1,5 @@
 # PR Monitor
 
-## Note: This Project is work in progress so will update the Readme as I go
 
 ## Project Overview
 The GitHub Pull Request Reviewer Bot is an AI-powered automation tool that reviews pull requests (PRs) using Large Language Models (LLMs). Whenever a PR is created the bot sends automated email feedback on code quality, security vulnerabilities, best practices, Lint score and documentation completeness.
