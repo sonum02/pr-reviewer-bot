@@ -1,3 +1,4 @@
+# Import all the libraries
 import os
 import openai
 from dotenv import load_dotenv
@@ -54,6 +55,13 @@ def main():
     pr_number = os.getenv('PR_NUMBER')
     github_token = os.getenv('GITHUB_TOKEN')
 
+<<<<<<< HEAD
+=======
+    repo_name = os.getenv('GITHUB_REPOSITORY')
+    pr_number = os.getenv('PR_NUMBER')
+    github_token = os.getenv('GH_TOKEN')
+
+>>>>>>> f1ea0715d156ed5cf5be696c44c4ddf6db765680
     changes = get_pr_changes(repo_name, pr_number, github_token)
     for change in changes:
         if change['status'] == 'modified' and change['filename'].endswith('.py'):
