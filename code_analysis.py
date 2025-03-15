@@ -1,9 +1,9 @@
-# Test the code analysis script by running it locally.
 # Import all the libraries
 import os
 import openai
 from dotenv import load_dotenv
 import requests
+import time
 
 # Load environment variables from .env file
 load_dotenv()
@@ -28,6 +28,12 @@ def get_pr_changes(repo_name, pr_number, token):
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
+        if response.status_code == 403 and 'X-RateLimit-Reset' in response.headers:
+            reset_time = int(response.headers['X-RateLimit-Reset'])
+            wait_time = reset_time - int(time.time())
+            print(f"Rate limit exceeded. Waiting for {wait_time} seconds.")
+            time.sleep(wait_time)
+            return get_pr_changes(repo_name, pr_number, token)
         print(f"Error fetching PR changes: {e}")
         return []
 
@@ -82,3 +88,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
